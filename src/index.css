@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme static {
+  --color-ivory: #FBF7EF;
+  --color-cream: #F4ECDD;
+  --color-sand: #E8DCC6;
+  --color-henna: #3B2218;
+  --color-henna-deep: #2A1710;
+  --color-gold: #B08D4F;
+  --color-gold-deep: #8A6A2F;
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ivory);
+  color: var(--color-henna);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-deep);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-henna);
+  color: var(--color-ivory);
+  padding: 0.75rem 1rem;
+}
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), rgba(176, 141, 79, 0));
+}
+.gold-rule-center {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(176, 141, 79, 0), var(--color-gold), rgba(176, 141, 79, 0));
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--color-henna);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--color-henna);
+  color: var(--color-ivory);
+}
+.btn-primary:hover {
+  background: var(--color-henna-deep);
+  border-color: var(--color-gold);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--color-henna);
+  border-color: var(--color-gold);
+}
+.btn-outline:hover {
+  background: var(--color-cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
