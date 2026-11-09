@@ -48,7 +48,7 @@ export const scopes = {
 
 const baseOneSide = { palm: 2500, wrist: 3000, bangle: 3500, mid_arm: 4500, three_quarter: 5500, elbow: 6500 }
 const sideFactor = { 1: 1, 2: 1.8, 3: 2.6, 4: 3.4 }
-const tierSurcharge = { 0: 0, 1: 0.15, 2: 0.3 }
+export const tierSurcharge = { 0: 0, 1: 0.15, 2: 0.3 }
 
 const partyBase = {
   stripe_only: { palm: 700, wrist: 900, bangle: 1100, mid_arm: 1400 },

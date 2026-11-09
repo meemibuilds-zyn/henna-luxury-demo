@@ -6,6 +6,7 @@ import Reveal from '../components/Reveal'
 import WorkImage from '../components/WorkImage'
 import Ornament from '../components/Ornament'
 import Confirm from '../components/Confirm'
+import Reviews from '../components/Reviews'
 import { site } from '../data/site'
 import { services } from '../data/services'
 import { steps } from '../data/process'
@@ -135,6 +136,8 @@ export default function Home() {
           </Link>
         </div>
       </Section>
+
+      <Reviews />
 
       {/* Booking CTAs */}
       <section className="bg-henna text-ivory" aria-labelledby="cta-h">
