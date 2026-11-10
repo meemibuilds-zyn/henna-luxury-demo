@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { waLink } from '../../lib/format'
-import { buildMessage, validateDetails, bookingRecord, isDemoNumber } from '../../lib/booking'
+import { buildMessage, validateDetails, bookingRecord, isDemoNumber, summaryLine, totalParts } from '../../lib/booking'
+import { buildICS, downloadICS } from '../../lib/ics'
+import { site } from '../../data/site'
 import { addBooking, updateBooking } from '../../data/bookingsStore'
 import StepTitle from './StepTitle'
 
@@ -57,6 +59,28 @@ export default function DetailsStep({ S, cfg, c, commit, titleRef }) {
       return
     }
     save()
+  }
+
+  const onCalendar = () => {
+    if (!check()) return
+    const rec = bookingRecord(S, cfg, c)
+    const ics = buildICS({
+      title: `Henna appointment (${site.name})`,
+      dateISO: rec.eventDate,
+      time: rec.eventTime,
+      description: [
+        summaryLine(S, cfg),
+        `Estimated total: ${totalParts(c).big}`,
+        'The final price and availability are confirmed by the artist.',
+        rec.notes ? `Notes: ${rec.notes}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n'),
+      location: S.where === 'visit' ? rec.address : 'Artist location (address to be confirmed)',
+      uid: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}@henna-demo`,
+    })
+    downloadICS(ics)
+    setNote('Calendar file downloaded. Open it to add the event. It includes a reminder 1 day before.')
   }
 
   const onCopy = async () => {
@@ -130,6 +154,9 @@ export default function DetailsStep({ S, cfg, c, commit, titleRef }) {
           </a>
           <button type="button" onClick={onCopy} className="btn btn-outline w-full">
             Copy message
+          </button>
+          <button type="button" onClick={onCalendar} className="btn btn-outline w-full">
+            Add to calendar
           </button>
         </div>
         {note && <p role="status" className="m-0 text-sm text-henna/80">{note}</p>}
