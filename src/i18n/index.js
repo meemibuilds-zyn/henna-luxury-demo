@@ -1,8 +1,9 @@
 import en from './en'
+import enTrust from './en.trust'
 import si from './si'
 import ta from './ta'
 
-const dictionaries = { en, si, ta }
+const dictionaries = { en: { ...en, ...enTrust }, si, ta }
 let current = 'en'
 
 export const languages = [
@@ -19,7 +20,8 @@ function lookup(obj, path) {
   return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj)
 }
 
-// t('nav.home') -> current language, then English, then the key itself
+// t('nav.home') -> current language, then English, then the key itself.
+// Arrays and objects are returned as they are, for example t('trust.faq.items').
 export function t(key) {
   const own = lookup(dictionaries[current], key)
   if (own !== undefined) return own
