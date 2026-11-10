@@ -37,7 +37,7 @@ export default function BookingPage({ cfg, eyebrow, title, intro, cardsEyebrow, 
         {children}
         <p className="mt-10 text-sm leading-6 text-henna/80">
           Read the <Link className="text-gold-deep underline underline-offset-4" to="/policy">booking policy</Link>,
-          see the full <Link className="text-gold-deep underline underline-offset-4" to="/services">price table</Link>,
+          see the full <Link className="text-gold-deep underline underline-offset-4" to="/pricing">price table</Link>,
           or <Link className="text-gold-deep underline underline-offset-4" to="/book">choose a different booking type</Link>.
         </p>
       </Section>

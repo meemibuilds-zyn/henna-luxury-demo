@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, ShoppingBag, X } from 'lucide-react'
 import { site } from '../data/site'
+import { useCart } from '../lib/useCart'
 import { t } from '../i18n'
 
 const links = [
   { to: '/', key: 'nav.home', end: true },
   { to: '/portfolio', key: 'nav.portfolio' },
-  { to: '/services', key: 'nav.services' },
+  { to: '/products', key: 'nav.products' },
   { to: '/process', key: 'nav.process' },
   { to: '/about', key: 'nav.about' },
   { to: '/faq', key: 'nav.faq' },
@@ -18,6 +19,27 @@ const linkClass = ({ isActive }) =>
   (isActive
     ? 'border-gold text-henna'
     : 'border-transparent text-henna/75 hover:text-henna hover:border-gold/60')
+
+function CartLink() {
+  const { count } = useCart()
+  return (
+    <Link
+      to="/cart"
+      aria-label={count ? `Cart, ${count} ${count === 1 ? 'item' : 'items'}` : 'Cart, empty'}
+      className="relative inline-flex h-11 w-11 items-center justify-center border border-gold/50 text-henna hover:bg-cream"
+    >
+      <ShoppingBag size={20} aria-hidden="true" />
+      {count > 0 && (
+        <span
+          aria-hidden="true"
+          className="absolute -right-1.5 -top-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-henna px-1 text-[0.65rem] text-ivory"
+        >
+          {count > 99 ? '99+' : count}
+        </span>
+      )}
+    </Link>
+  )
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -38,7 +60,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-gold/30 bg-ivory/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3 sm:px-8">
         <Link to="/" className="leading-tight no-underline">
           <span className="block font-serif text-xl font-semibold text-henna sm:text-2xl">
             {site.name}
@@ -59,16 +81,19 @@ export default function Header() {
           </Link>
         </nav>
 
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center border border-gold/50 text-henna lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? t('nav.closeMenu') : t('nav.menu')}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <CartLink />
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center border border-gold/50 text-henna lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? t('nav.closeMenu') : t('nav.menu')}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
+        </div>
       </div>
 
       {open && (

@@ -64,7 +64,7 @@ export default function About() {
       <Section>
         <h2 className="text-2xl sm:text-3xl">Booking with confidence</h2>
         <ul className="m-0 mt-6 list-none space-y-3 p-0 text-sm leading-6 text-henna/85">
-          <li>Prices are published on the <Link className="text-gold-deep underline underline-offset-4" to="/services">pricing page</Link>.</li>
+          <li>Prices are published on the <Link className="text-gold-deep underline underline-offset-4" to="/pricing">pricing page</Link>.</li>
           <li>The booking terms are written on the <Link className="text-gold-deep underline underline-offset-4" to="/policy">booking policy page</Link>.</li>
           <li>The <Link className="text-gold-deep underline underline-offset-4" to="/process">process</Link> shows what happens from first message to aftercare.</li>
         </ul>

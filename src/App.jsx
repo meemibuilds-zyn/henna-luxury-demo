@@ -1,10 +1,13 @@
 import { lazy } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 
 const Home = lazy(() => import('./pages/Home'))
 const Portfolio = lazy(() => import('./pages/Portfolio'))
-const Services = lazy(() => import('./pages/Services'))
+const Products = lazy(() => import('./pages/Products'))
+const ProductDetail = lazy(() => import('./pages/ProductDetail'))
+const Cart = lazy(() => import('./pages/Cart'))
+const Pricing = lazy(() => import('./pages/Pricing'))
 const About = lazy(() => import('./pages/About'))
 const Process = lazy(() => import('./pages/Process'))
 const Policy = lazy(() => import('./pages/Policy'))
@@ -25,7 +28,11 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="portfolio" element={<Portfolio />} />
-        <Route path="services" element={<Services />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/:slug" element={<ProductDetail />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="services" element={<Navigate to="/pricing" replace />} />
         <Route path="about" element={<About />} />
         <Route path="process" element={<Process />} />
         <Route path="policy" element={<Policy />} />

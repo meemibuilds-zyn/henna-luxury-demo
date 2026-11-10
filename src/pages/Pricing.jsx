@@ -42,7 +42,7 @@ function Table({ label, children }) {
   )
 }
 
-export default function Services() {
+export default function Pricing() {
   const tiers = [0, 1, 2].map((t) => ({
     tier: t,
     pct: Math.round(tierSurcharge[t] * 100),
@@ -57,7 +57,7 @@ export default function Services() {
           <SectionHeading
             level={1}
             eyebrow="Transparent pricing"
-            title="Services & Pricing"
+            title="Pricing"
             intro="Prices are shown openly so you know what to expect before you message the artist."
           />
           <p className="mt-6 inline-block border border-dashed border-gold bg-cream px-3 py-2 text-sm text-gold-deep">

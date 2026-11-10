@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
+import SiteFact from './SiteFact'
 import { t } from '../i18n'
 
 const colTitle = 'text-[0.7rem] uppercase tracking-[0.24em] text-gold-deep'
@@ -18,7 +19,7 @@ export default function Footer() {
           <h2 className={colTitle + ' font-sans font-medium'}>{t('footer.explore')}</h2>
           <ul className="mt-4 flex list-none flex-col gap-2 p-0">
             <li><Link className={linkCls} to="/portfolio">{t('nav.portfolio')}</Link></li>
-            <li><Link className={linkCls} to="/services">{t('nav.services')}</Link></li>
+            <li><Link className={linkCls} to="/products">{t('nav.products')}</Link></li>
             <li><Link className={linkCls} to="/about">{t('nav.about')}</Link></li>
             <li><Link className={linkCls} to="/book">{t('nav.book')}</Link></li>
           </ul>
@@ -28,6 +29,7 @@ export default function Footer() {
           <h2 className={colTitle + ' font-sans font-medium'}>{t('footer.trust')}</h2>
           <ul className="mt-4 flex list-none flex-col gap-2 p-0">
             <li><Link className={linkCls} to="/process">{t('nav.process')}</Link></li>
+            <li><Link className={linkCls} to="/pricing">{t('nav.pricing')}</Link></li>
             <li><Link className={linkCls} to="/policy">{t('footer.policy')}</Link></li>
             <li><Link className={linkCls} to="/expect">{t('footer.expect')}</Link></li>
             <li><Link className={linkCls} to="/aftercare">{t('footer.aftercare')}</Link></li>
@@ -38,10 +40,10 @@ export default function Footer() {
         <div>
           <h2 className={colTitle + ' font-sans font-medium'}>{t('footer.contact')}</h2>
           <ul className="mt-4 flex list-none flex-col gap-2 p-0 text-sm text-henna/80">
-            <li>{site.whatsappDisplay}</li>
-            <li>{site.instagram}</li>
-            <li>{site.email}</li>
-            <li>{site.area}</li>
+            <li><SiteFact value={site.whatsappDisplay} /></li>
+            <li><SiteFact value={site.instagram} /></li>
+            <li><SiteFact value={site.email} /></li>
+            <li><SiteFact value={site.area} /></li>
           </ul>
         </div>
       </div>

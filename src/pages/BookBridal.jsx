@@ -47,7 +47,7 @@ export default function BookBridal() {
         </ul>
         <p className="mt-10 text-sm leading-6 text-henna/80">
           Read the <Link className="text-gold-deep underline underline-offset-4" to="/policy">booking policy</Link>{' '}
-          and see the full <Link className="text-gold-deep underline underline-offset-4" to="/services">price table</Link>.
+          and see the full <Link className="text-gold-deep underline underline-offset-4" to="/pricing">price table</Link>.
         </p>
       </Section>
     </>

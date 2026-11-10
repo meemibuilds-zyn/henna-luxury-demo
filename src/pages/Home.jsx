@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 import Section from '../components/Section'
 import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import WorkImage from '../components/WorkImage'
 import Ornament from '../components/Ornament'
-import Confirm from '../components/Confirm'
+import SiteFact from '../components/SiteFact'
 import Reviews from '../components/Reviews'
 import { site } from '../data/site'
 import { services } from '../data/services'
@@ -14,7 +14,7 @@ import { getFeaturedWorks } from '../data/portfolio'
 import { waLink } from '../lib/format'
 
 const trust = [
-  { label: 'Transparent pricing', to: '/services' },
+  { label: 'Transparent pricing', to: '/pricing' },
   { label: 'Written booking policy', to: '/policy' },
   { label: 'A clear process', to: '/process' },
   { label: 'Estimate before you message', to: '/book' },
@@ -64,38 +64,8 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* Services */}
-      <Section labelledBy="services-h">
-        <SectionHeading
-          id="services-h"
-          eyebrow="Services"
-          title="Henna for every occasion"
-          intro="Choose the booking page that fits your event. Each one shows a live estimate before you contact the artist."
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <Link
-              key={s.id}
-              to={s.to}
-              className="group flex flex-col border border-gold/40 bg-ivory p-6 no-underline transition-colors hover:border-gold hover:bg-cream"
-            >
-              <h3 className="text-2xl text-henna">{s.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-6 text-henna/80">{s.text}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.18em] text-gold-deep">
-                Book <ArrowRight size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
-        </div>
-        <p className="mt-8 text-sm">
-          <Link to="/services" className="text-gold-deep underline underline-offset-4">
-            See the full price table
-          </Link>
-        </p>
-      </Section>
-
       {/* Featured works */}
-      <Section tone="cream" labelledBy="works-h">
+      <Section labelledBy="works-h">
         <SectionHeading
           id="works-h"
           eyebrow="Portfolio"
@@ -119,7 +89,7 @@ export default function Home() {
       </Section>
 
       {/* How it works */}
-      <Section labelledBy="how-h">
+      <Section tone="cream" labelledBy="how-h">
         <SectionHeading id="how-h" eyebrow="How it works" title="A clear, simple process" center />
         <ol className="m-0 mt-14 grid list-none gap-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
@@ -172,10 +142,10 @@ export default function Home() {
           />
           <div>
             <ul className="m-0 list-none space-y-3 p-0 text-sm text-henna/85">
-              <li><Confirm>WhatsApp number</Confirm></li>
-              <li><Confirm>Instagram handle</Confirm></li>
-              <li><Confirm>email address</Confirm></li>
-              <li><Confirm>base area, Sri Lanka</Confirm></li>
+              <li><SiteFact value={site.whatsappDisplay} /></li>
+              <li><SiteFact value={site.instagram} /></li>
+              <li><SiteFact value={site.email} /></li>
+              <li><SiteFact value={site.area} /></li>
             </ul>
             <a
               href={waLink(hello)}

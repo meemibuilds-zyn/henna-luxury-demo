@@ -2,7 +2,8 @@ export default {
   nav: {
     home: 'Home',
     portfolio: 'Portfolio',
-    services: 'Services & Pricing',
+    products: 'Products',
+    pricing: 'Pricing',
     process: 'Process',
     about: 'About',
     faq: 'FAQ',
